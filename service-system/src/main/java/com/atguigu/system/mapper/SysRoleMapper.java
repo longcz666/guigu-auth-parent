@@ -17,5 +17,5 @@ public interface SysRoleMapper extends BaseMapper<SysRole> {
 
     List<SysRole> selectAll();
 
-    SysRole selectById(Long id);
+
 }
