@@ -2,11 +2,9 @@ package com.atguigu.system;
 
 import com.atguigu.model.system.SysRole;
 import com.atguigu.system.mapper.SysRoleMapper;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 
 import java.util.List;
 
@@ -32,10 +30,14 @@ public class SystemRoleMapperTest {
     @Test
     void testRole01(){
 
-        LambdaQueryWrapper<SysRole> rqw = new LambdaQueryWrapper<>();
-
         List<SysRole> sysRoles = sysRoleMapper.selectAll();
         sysRoles.forEach(System.out::println);
     }
+
+    @Test
+    void testS(){
+
+    }
+
 
 }

@@ -24,7 +24,7 @@ import java.util.Objects;
 
 @Api(tags = "角色管理接口")
 @RestController
-@RequestMapping("/admin/system/sysRol")
+@RequestMapping("/admin/system/sysRole")
 public class SysRoleController {
 
     @Autowired
@@ -40,10 +40,10 @@ public class SysRoleController {
     @GetMapping("/findAll")
     public Result findAll() {
         try {
-            int a = 10/0;
+            //int a = 10/0;
         } catch (Exception e) {
             e.printStackTrace();
-            throw new MyExceptionHandler(2001,"执行了自定义异常处理");
+            throw new MyExceptionHandler(2001, "执行了自定义异常处理");
         }
         List<SysRole> roleList = sysRoleService.list();
         return Result.ok(roleList);
@@ -59,7 +59,7 @@ public class SysRoleController {
     @GetMapping("/getById/{id}")
     public Result getById(@PathVariable Long id) {
         SysRole sysRole = sysRoleService.getById(id);
-        if (Objects.isNull(sysRole)){
+        if (Objects.isNull(sysRole)) {
             return Result.fail().message("该用户不存在");
         }
         return Result.ok(sysRole);
