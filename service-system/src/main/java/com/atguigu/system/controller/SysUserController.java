@@ -23,6 +23,14 @@ public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
 
+    @ApiOperation("更改用户状态")
+    @PutMapping("/updateStatus/{id}/{status}")
+    public Result updateStatus(@PathVariable Long id,
+                               @PathVariable Long status){
+        sysUserService.updateStatus(id,status);
+        return Result.ok();
+    }
+
     @ApiOperation("条件分页查询")
     @GetMapping("/{page}/{limit}")
     public Result getPageUser(@PathVariable Long page,
@@ -62,7 +70,7 @@ public class SysUserController {
     }
 
     @ApiOperation("按id删除")
-    @DeleteMapping("/remove/{id}")
+    @DeleteMapping("/removeById/{id}")
     public Result removeById(@PathVariable Long id) {
         boolean b = sysUserService.removeById(id);
         if (b) {

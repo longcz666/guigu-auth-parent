@@ -18,6 +18,8 @@ import org.apache.ibatis.annotations.Param;
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
     IPage<SysUser> selectPageUser(Page<SysUser> sysUserPage, @Param("vo") SysUserQueryVo sysUserQueryVo);
+
+    void updateStatus(Long id, Long status);
 }
 
 

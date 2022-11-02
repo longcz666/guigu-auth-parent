@@ -27,6 +27,9 @@
         status,create_time,update_time,
         is_deleted
     </sql>
+    <update id="updateStatus">
+        update sys_user set status = #{status} where id = #{id}
+    </update>
     <resultMap id="sysUserMap" type="com.atguigu.model.system.SysUser"/>
 
     <sql id="columns">
