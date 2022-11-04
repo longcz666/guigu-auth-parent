@@ -1,9 +1,12 @@
 package com.atguigu.system.service;
 
 import com.atguigu.model.system.SysUser;
+import com.atguigu.model.vo.LoginVo;
 import com.atguigu.model.vo.SysUserQueryVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.HashMap;
 
 /**
 * @author 25986
@@ -15,4 +18,8 @@ public interface SysUserService extends IService<SysUser> {
     IPage<SysUser> getPageUser(Long page, Long limit, SysUserQueryVo sysUserQueryVo);
 
     void updateStatus(Long id, Long status);
+
+    SysUser getUserByName(LoginVo loginVo);
+
+    HashMap<String, Object> getUserInfo(String username);
 }

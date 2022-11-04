@@ -1,5 +1,6 @@
 package com.atguigu.system.controller;
 
+import cn.hutool.crypto.digest.DigestUtil;
 import com.atguigu.common.result.Result;
 import com.atguigu.model.system.SysUser;
 import com.atguigu.model.vo.SysUserQueryVo;
@@ -50,6 +51,11 @@ public class SysUserController {
     @ApiOperation("添加用户")
     @PostMapping("/saveUser")
     public Result saveUser(@RequestBody SysUser sysUser) {
+
+        //密码加密
+        String password = DigestUtil.md5Hex(sysUser.getPassword());
+        sysUser.setPassword(password);
+
         boolean b = sysUserService.save(sysUser);
         if (b) {
             return Result.ok().message("添加成功");

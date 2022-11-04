@@ -3,6 +3,9 @@ package com.atguigu.system.mapper;
 import com.atguigu.model.system.SysMenu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
 * @author 25986
@@ -13,6 +16,9 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
 
+    List<String> selectRoleByMenuId(@Param("roleId") String roleId);
+
+    List<SysMenu> findMenuListByUserId(@Param("userId") String userId);
 }
 
 
