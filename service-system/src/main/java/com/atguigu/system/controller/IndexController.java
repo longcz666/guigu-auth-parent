@@ -64,11 +64,12 @@ public class IndexController {
     }
 
     /**
-     * @Description: info
      * @Param:
-     * @Throws:
      * @Return:
+     * @Throws:
+     * @Description:
      */
+
     @ApiOperation("首页初始化接口")
     @GetMapping("/info")
     public Result info(HttpServletRequest request){

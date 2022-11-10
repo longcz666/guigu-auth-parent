@@ -10,6 +10,7 @@
         <module name="spring-security" />
         <module name="model" />
         <module name="common-util" />
+        <module name="common-log" />
         <module name="service-system" />
         <module name="service-util" />
       </profile>
@@ -17,6 +18,8 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="common" options="" />
+      <module name="common-log" options="-parameters" />
       <module name="common-util" options="-parameters" />
       <module name="model" options="-parameters" />
       <module name="service-system" options="-parameters" />

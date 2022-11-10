@@ -1,9 +1,13 @@
 package com.atguigu.system.exception;
 
 import com.atguigu.common.result.Result;
+import com.atguigu.common.result.ResultCodeEnum;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+
 
 /**
  * @Author: longcz
@@ -36,4 +40,17 @@ public class GlobalExceptionHandler {
         e.printStackTrace();
         return Result.fail().code(e.getCode()).message(e.getMsg());
     }
+
+    /**
+     * spring security异常
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(AccessDeniedException.class)
+    @ResponseBody
+    public Result error(AccessDeniedException e) throws AccessDeniedException {
+        e.printStackTrace();
+        return Result.fail().code(ResultCodeEnum.PERMISSION.getCode()).message("您的权限不足，请联系管理员！");
+    }
+
 }

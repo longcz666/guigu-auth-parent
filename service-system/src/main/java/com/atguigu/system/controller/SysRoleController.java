@@ -4,6 +4,8 @@ import com.atguigu.common.result.Result;
 import com.atguigu.model.system.SysRole;
 import com.atguigu.model.vo.AssginRoleVo;
 import com.atguigu.model.vo.SysRoleQueryVo;
+import com.atguigu.system.annotation.Log;
+import com.atguigu.system.enums.BusinessType;
 import com.atguigu.system.exception.MyExceptionHandler;
 import com.atguigu.system.service.SysRoleService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -11,6 +13,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -72,6 +75,7 @@ public class SysRoleController {
      * @Throws:
      * @Return:
      */
+    @PreAuthorize("hasAuthority('bnt.sysRole.list')")
     @ApiOperation("根据id查询")
     @GetMapping("/getById/{id}")
     public Result getById(@PathVariable Long id) {
@@ -88,6 +92,7 @@ public class SysRoleController {
      * @Throws:
      * @Return:
      */
+    @PreAuthorize("hasAuthority('bnt.sysRole.list')")
     @ApiOperation("条件分页查询")
     @GetMapping("{page}/{limit}")
     public Result findPageRole(@PathVariable Long page,
@@ -105,6 +110,7 @@ public class SysRoleController {
      * @Throws:
      * @Return:
      */
+    @PreAuthorize("hasAuthority('bnt.sysRole.remove')")
     @ApiOperation("按id删除")
     @DeleteMapping("/remove/{id}")
     public Result removeById(@PathVariable Long id) {
@@ -116,6 +122,7 @@ public class SysRoleController {
         }
     }
 
+    @PreAuthorize("hasAuthority('bnt.sysRole.remove')")
     @ApiOperation("批量删除")
     @DeleteMapping("/batchRemove")
     public Result batchRemove(@RequestBody List<Long> ids) {
@@ -133,6 +140,8 @@ public class SysRoleController {
      * @Throws:
      * @Return:
      */
+    @Log(title = "角色管理",businessType = BusinessType.INSERT)
+    @PreAuthorize("hasAuthority('bnt.sysRole.add')")
     @ApiOperation("增加角色")
     @PostMapping("/save")
     public Result save(@RequestBody SysRole sysRole) {
@@ -146,10 +155,11 @@ public class SysRoleController {
 
     /**
      * @Description: 修改角色
-     * @Param:
+     * @Param: SysRole
      * @Throws:
      * @Return:
      */
+    @PreAuthorize("hasAuthority('bnt.sysRole.update')")
     @ApiOperation("修改角色")
     @PutMapping("/updateById")
     public Result updateById(@RequestBody SysRole sysRole) {
