@@ -30,6 +30,7 @@
     <update id="updateStatus">
         update sys_user set status = #{status} where id = #{id}
     </update>
+
     <resultMap id="sysUserMap" type="com.atguigu.model.system.SysUser"/>
 
     <sql id="columns">
